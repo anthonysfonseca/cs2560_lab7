@@ -1,7 +1,7 @@
 // This program will read in prices and store them into a two-dimensional array.
 // It will print those prices in a table form.
 
-// PLACE YOUR NAME HERE
+// Anthony Fonseca
 
 #include <iostream>
 #include <iomanip>
@@ -16,6 +16,7 @@ typedef float PriceType[MAXROWS][MAXCOLS];	// creates a new data type
 void getPrices(PriceType, int&, int&);		// gets the prices into the array 
 void printPrices(PriceType, int, int);		// prints data as a table
 float findHighestPrice(PriceType, int, int);
+float findLowestPrice(PriceType, int, int);
 
 int main()
 {
@@ -27,6 +28,7 @@ int main()
 	printPrices(priceTable, rowsUsed, colsUsed);	// calls printPrices to display array
 
 	cout << "The highest value item is $" << findHighestPrice(priceTable, rowsUsed, colsUsed) << "\n";
+	cout << "The lowest value item is $" << findLowestPrice(priceTable, rowsUsed, colsUsed) << "\n";
 
 	return 0;
 }
@@ -95,4 +97,16 @@ float findHighestPrice(PriceType table, int numOfRows, int numOfCols)
 			if ( highestPrice < table[row][col] )
 				highestPrice = table[row][col];
 	return highestPrice;
+}
+
+float findLowestPrice(PriceType table, int numOfRows, int numOfCols)
+// This function returns the highest price in the array
+{
+	float lowestPrice;
+	lowestPrice = table[0][0]; // make first element the highest price
+	for (int row = 0; row < numOfRows; row++)
+		for (int col = 0; col < numOfCols; col++)
+			if ( lowestPrice > table[row][col] )
+				lowestPrice = table[row][col];
+	return lowestPrice;
 }
