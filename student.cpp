@@ -7,7 +7,7 @@
 // Grades are assigned on a 10 point spread.
 // 90-100 A	80-89 B	70-79 C	60-69 D	Below 60 F
 
-// PLACE YOUR NAME HERE
+// Anthony Fonseca
 
 #include <iostream>
 #include <iomanip>
@@ -67,14 +67,18 @@ int main()
 		{
 			cout << endl << "Please input a grade" << endl;
 
-			// Fill in the input statement to place grade in the array
+			cin >> grades[count];
 		}
 
 		cout << firstname << " " << lastname << " has an average of ";
 
-		// Fill in code to get and print average of student to screen
+		average = findGradeAvg(grades, numOfGrades);
 
-		// Fill in call to get and print letter grade of student to screen
+		cout << average;
+
+		cout << " which gives the letter grade of ";
+
+		cout << findLetterGrade(average) << endl;
 
 		cout << endl << endl << endl;
 
@@ -99,7 +103,13 @@ int main()
 
 float findGradeAvg(GradeType array, int numGrades)
 {
-	// Fill in the code for this function
+	float total = 0;
+	float average = 0;
+	for (int i = 0; i < numGrades; i++) {
+		total += array[i];
+		average = total / numGrades;
+	}
+	return average;
 }
 
 //***********************************************************************
@@ -116,5 +126,15 @@ float findGradeAvg(GradeType array, int numGrades)
 
 char findLetterGrade(float numGrade)
 {
-	// Fill in the code for this function
+	if (90 <= numGrade && numGrade <= 100)
+		return 'A';
+	if (80 <= numGrade && numGrade <= 89)
+		return 'B';
+	if (70 <= numGrade && numGrade <= 79)
+		return 'C';
+	if (60 <= numGrade && numGrade <= 69)
+		return 'D';
+	if (60 > numGrade)
+		return 'F';
+	return ' ';
 }
