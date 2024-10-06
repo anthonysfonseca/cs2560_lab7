@@ -2,7 +2,7 @@
 // of years. It will print the year and transactions in a table format.
 // It will calculate year and quarter total transactions.
 
-// PLACE YOUR NAME HERE
+// Anthony Fonseca
 
 #include <iostream>
 #include <iomanip>
@@ -42,9 +42,9 @@ void printTableHeading()
 {
 	cout << setw(30) << "YEARLY QUARTERLY SALES" << endl << endl << endl;
 
-	cout << setw(10) << "YEAR" << setw(10) << "Quarter 1"
-		 << setw(10) << "Quarter 2" << setw(10) << "Quarter 3"
-		 << setw(10) << "Quarter 4" << endl;
+	cout << setw(15) << "YEAR" << setw(15) << "Quarter 1"
+		 << setw(15) << "Quarter 2" << setw(15) << "Quarter 3"
+		 << setw(15) << "Quarter 4" << endl;
 }
 
 //*****************************************************************************
@@ -64,7 +64,12 @@ void getSales(SalesType	table, int&	numOfYears)
 	cout << "Please input the number of years (1-" << MAXYEAR << ")" << endl;
 	cin >> numOfYears;
 
-	// Fill in the code to read and store the next value
+	for (int i = 0; i < numOfYears; i++) {
+		for (int j = 1; j < 5; j++) {
+			cout << "Please input the sales for Quarter " << j + 1 << endl;
+			cin >> table[i][j];
+		}
+	}
 }
 
 //*****************************************************************************
@@ -78,5 +83,8 @@ void getSales(SalesType	table, int&	numOfYears)
 
 void printSales(SalesType table, int numOfYears)
 {
-	// Fill in the code to print the table
+	for (int i = 0; i < numOfYears; i++) {
+		cout << setw(15) << "200" << i << setw(15) << table[i][1]
+			 << setw(15) << table[i][2] << setw(15) << table[i][3]
+			 << setw(15) << table[i][4] << endl;}
 }
