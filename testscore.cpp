@@ -2,9 +2,10 @@
 // from the keyboard and then calculate and output the average score
 // as well as the highest and lowest score. There will be a maximum of 100 scores.
 
-// PLACE YOUR NAME HERE
+// Anthony Fonseca
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 typedef int GradeType[100];		// declares a new data type:
@@ -16,15 +17,28 @@ int  findLowest(const GradeType, int);		// finds lowest of all grades
 
 int main()
 {
+	ifstream dataIn;
 	GradeType grades;	// the array holding the grades. 
 	int numberOfGrades;	// the number of grades read.
-	int pos;			// index to the array.
+	int pos = 0;			// index to the array.
 	float avgOfGrades;	// contains the average of the grades. 
 	int highestGrade;	// contains the highest grade.
 	int lowestGrade;	// contains the lowest grade.
 
-	// Read in the values into the array 
-	pos = 0;
+	dataIn.open("../gradfile.txt");
+
+	int currentGrade;
+	if (dataIn) {
+		while (dataIn >> currentGrade) {
+			grades[pos] = currentGrade;
+			pos++;
+		}
+		dataIn.close();
+	} else
+		cout << "Error opening file." << endl;
+
+	/*
+	// Read in the values into the array
 	cout << "Please input a grade from 1 to 100, (or -99 to stop)" << endl;
 	cin >> grades[pos];
 
@@ -34,6 +48,7 @@ int main()
 		cout << "Please input a grade from 1 to 100, (or -99 to stop)" << endl;
 		cin >> grades[pos];
 	}
+	*/
 
 	numberOfGrades = pos;	// Fill blank with appropriate identifier
 
