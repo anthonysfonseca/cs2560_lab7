@@ -52,8 +52,7 @@ void getPrices(PriceType table, int& numOfRows, int& numOfCols)
 	{
 		for (int col = 0; col < numOfCols; col++)
 		{
-			cout << "Please input the price for row " << row + 1 << " column "
-				<< col + 1 << endl;
+			cout << "Please input the price of an item with 2 decimal places" << endl;
 			cin >> table[row][col];
 		}
 	}
